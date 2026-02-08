@@ -12,5 +12,12 @@
         "Valid": "1",
         "InfoMessage": "1 Day Premium (Public)",
         "Expiration": "2026-02-09"
+    },
+    {
+        "Name": "Y",
+        "Key": "abd26785e9cef8dd",
+        "Valid": "1",
+        "InfoMessage": "1 Day Premium (Public)",
+        "Expiration": "2026-02-09"
     }
 ]
