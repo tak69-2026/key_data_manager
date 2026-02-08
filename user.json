@@ -1,9 +1,16 @@
 [
-  {
-    "Name": "Test",
-    "Key": "abd26785e9cef8d1",
-    "Valid": "5",
-    "InfoMessage": "None",
-    "Expiration": "2026-02-12"
-  }
+    {
+        "Name": "Test",
+        "Key": "abd26785e9cef8d1",
+        "Valid": "5",
+        "InfoMessage": "None",
+        "Expiration": "2026-02-12"
+    },
+    {
+        "Name": "V2",
+        "Key": "abd26785e9cef8ds",
+        "Valid": "1",
+        "InfoMessage": "1 Day Premium (Public)",
+        "Expiration": "2026-02-09"
+    }
 ]
