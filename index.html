@@ -19,19 +19,19 @@
     <form id="dataForm">
         <div class="mb-3">
             <label>Name:</label>
-            <input type="text" id="name" class="form-control" required>
+            <input type="text" id="name" class="form-control" required placeholder="User Name">
         </div>
         <div class="mb-3">
             <label>Key:</label>
-            <input type="text" id="key" class="form-control" required>
+            <input type="text" id="key" class="form-control" required placeholder="Unique Key">
         </div>
         <div class="mb-3">
             <label>Valid (Days):</label>
-            <input type="number" id="valid" class="form-control" required>
+            <input type="number" id="valid" class="form-control" required placeholder="30">
         </div>
         <div class="mb-3">
             <label>Message:</label>
-            <textarea id="message" class="form-control" rows="2" required></textarea>
+            <textarea id="message" class="form-control" rows="2" required placeholder="Info Message"></textarea>
         </div>
         <div class="mb-3">
             <label>Expiration Date:</label>
@@ -44,13 +44,13 @@
 
 <script>
     // ==========================================
-    // 👇 အောက်ပါ ၃ နေရာကို ကိုယ့်အချက်အလက် ပြင်ပါ
+    // 👇 ပြင်ဆင်ထားသော အပိုင်း (JS Syntax အမှန်)
     // ==========================================
-  GH_TOKEN="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"
-  GH_USER="tak69-2026"
-  GH_REPO="key_data_manager"
-  GH_BRANCH="main"
-  GH_FILE="user.json"
+    const GITHUB_TOKEN = "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"; 
+    const GITHUB_USER = "tak69-2026";
+    const GITHUB_REPO = "key_data_manager";
+    const BRANCH = "main";
+    const FILE_NAME = "user.json";
     // ==========================================
 
     document.getElementById('dataForm').addEventListener('submit', async function(e) {
@@ -58,6 +58,7 @@
         const loading = document.getElementById('loading');
         loading.style.display = 'block';
 
+        // Form Data ယူခြင်း
         const newData = {
             Name: document.getElementById('name').value,
             Key: document.getElementById('key').value,
@@ -67,7 +68,7 @@
         };
 
         try {
-            // 1. Get current file content and SHA
+            // 1. လက်ရှိ user.json ကို GitHub မှ လှမ်းယူခြင်း (SHA ရဖို့လိုသည်)
             const url = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${FILE_NAME}`;
             const getResponse = await fetch(url, {
                 headers: {
@@ -81,18 +82,19 @@
 
             if (getResponse.ok) {
                 const fileData = await getResponse.json();
+                // Base64 မှ Decode လုပ်ခြင်း (UTF-8 support အတွက်)
                 const decodedContent = decodeURIComponent(escape(atob(fileData.content)));
                 currentData = JSON.parse(decodedContent);
-                sha = fileData.sha;
+                sha = fileData.sha; // Update လုပ်ဖို့ SHA လိုအပ်သည်
             }
 
-            // 2. Append new data
+            // 2. Data အသစ် ပေါင်းထည့်ခြင်း
             currentData.push(newData);
 
-            // 3. Encode back to Base64 (UTF-8 safe)
+            // 3. JSON ကို Base64 ပြန်ပြောင်းခြင်း
             const updatedContent = btoa(unescape(encodeURIComponent(JSON.stringify(currentData, null, 2))));
 
-            // 4. Update file on GitHub
+            // 4. GitHub သို့ ပြန် Save ခြင်း (PUT Request)
             const putResponse = await fetch(url, {
                 method: 'PUT',
                 headers: {
@@ -100,9 +102,9 @@
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    message: "Add new key via Web",
+                    message: "Add new key via Web App",
                     content: updatedContent,
-                    sha: sha,
+                    sha: sha, // SHA မပါရင် Update လုပ်မရပါ
                     branch: BRANCH
                 })
             });
@@ -112,10 +114,11 @@
                 document.getElementById('dataForm').reset();
             } else {
                 const err = await putResponse.json();
-                alert("❌ Error: " + err.message);
+                alert("❌ Error: " + (err.message || JSON.stringify(err)));
             }
 
         } catch (error) {
+            console.error(error);
             alert("❌ Network or API Error: " + error);
         } finally {
             loading.style.display = 'none';
