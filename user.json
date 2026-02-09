@@ -5,5 +5,12 @@
         "Valid": "1",
         "InfoMessage": "2 Days Premium",
         "Expiration": "2026-02-10"
+    },
+    {
+        "Name": "Member",
+        "Key": "93b808a4376eb0fa",
+        "Valid": "1",
+        "InfoMessage": "2 Days Premium",
+        "Expiration": "2026-02-11"
     }
 ]
