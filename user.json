@@ -1,23 +1,5 @@
 [
     {
-        "Name": "Tak",
-        "Key": "abd26785e9cef8d1",
-        "Valid": "1",
-        "InfoMessage": "1 Day Premium (Public)",
-        "Expiration": "2026-02-09"
-    },
-    {
-        "Name": "zAi",
-        "Key": "abd26785e9cef8ds",
-        "Valid": "1",
-        "InfoMessage": "1 Day Premium (Public)",
-        "Expiration": "2026-02-10"
-    },
-    {
-        "Name": "Member",
-        "Key": "xibfskdkwj653684",
-        "Valid": "1",
-        "InfoMessage": "2 Days Premium",
-        "Expiration": "2026-02-11"
+        
     }
 ]
