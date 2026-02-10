@@ -327,5 +327,12 @@
         "Valid": "1",
         "InfoMessage": "1 Days Premium",
         "Expiration": "2026-02-11"
+    },
+    {
+        "Name": "Member",
+        "Key": "1c6e8426544631b7",
+        "Valid": "1",
+        "InfoMessage": "1 Days Premium",
+        "Expiration": "2026-02-11"
     }
 ]
