@@ -740,5 +740,12 @@
         "Valid": "10",
         "InfoMessage": "10 Days Premium",
         "Expiration": "2026-02-23"
+    },
+    {
+        "Name": "Member",
+        "Key": "ef317cb6a33e7bb1",
+        "Valid": "10",
+        "InfoMessage": "10 Days Premium",
+        "Expiration": "2026-02-24"
     }
 ]
